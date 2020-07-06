@@ -1,5 +1,13 @@
 -module(palin).
--export([pal_check/1, palindrome_check/1, rem_punct/1, to_small/1]).
+-export([palindrome_answer/1,  pal_check/1, palindrome_check/1, rem_punct/1, to_small/1]).
+
+palindrome_answer(Text) ->
+   palindrome_answer(Text, palindrome_check(Text)).
+
+palindrome_answer(Text, true) ->
+  lists:flatten(io_lib:format("\"~s\" is a palindrome", [Text]) );
+palindrome_answer(Text, false) ->
+  lists:flatten(io_lib:format("\"~s\" is not a palindrome", [Text]) ).
 
 % code taken from the course
 pal_check(String) -> String==lists:reverse(String).
@@ -23,3 +31,5 @@ to_small(String) -> lists:map(fun(Ch) ->
 palindrome_check(String) ->
     Normalise = to_small(rem_punct(String)),
     lists:reverse(Normalise) == Normalise.
+
+

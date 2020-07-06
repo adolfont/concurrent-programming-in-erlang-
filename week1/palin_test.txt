@@ -1,0 +1,16 @@
+How to test it:
+
+
+c(palin).
+c(server).
+Self = self().
+Server = spawn(server, run, [Self]).
+
+
+Server ! {check, "Aa"}.
+receive {result, Msg} ->  io:format("~s\n", [Msg]) end.
+
+Server ! {check, "Aafdsafs"}.
+receive {result, Msg} ->  io:format("~s\n", [Msg]) end.
+
+receive Msg ->  Msg end.
