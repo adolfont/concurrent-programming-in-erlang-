@@ -1,13 +1,14 @@
 -module(server).
 
--export([run/1]).
+-export([run/0]).
 
-run(Client) ->
+run() ->
     receive
-      {check, Text} ->
+      {Client, check, Text} ->
+          io:format("Server received check message\n"),
           Client ! {result, palin:palindrome_answer(Text)},
-          run(Client);
+          run();
       _Msg ->
-          Client ! io:format("stopped~n")
+          io:format("stopped~n")
     end.
 
