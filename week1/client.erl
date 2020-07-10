@@ -5,8 +5,8 @@
 run() ->
     receive
       {result, Result} ->
-        io:fwrite("Just received this from server: \n"),
-        io:format("~s\n",[Result]),
-        run()
+          io:fwrite("Just received this from server: \n"),
+          io:format("~s\n", [Result]),
+          run()
     end.
 
